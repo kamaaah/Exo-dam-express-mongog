@@ -1,21 +1,23 @@
 const model = require("../models/users.model")();
-
+const db = require('../db/mongo-con')();
 var userController = function () {};
 
 userController.show = function (req, res, next) {
-  mdoel.find({}, (err, result) => {
+ 
+  model.find({}, (err, result) => {
     if (err) {
       console.log(err);
     }
-    res.json("user.ejs", {
-      user: result,
-      userId: "",
-      userNom: "",
-      userPrenom: "",
-      userAdress: "",
-      userCp: "",
-      userCity: "",
+    res.json({
+      users: result,
+      id: "",
+      nom: "",
+      prenom: "",
+      adresse: "",
+      codePostal: "",
+      ville: "",
     });
+  
   });
 };
 
@@ -28,16 +30,17 @@ userController.edit = function (req, res) {
     console.log(result.prenom);
     result.save();
     res.json({
-      user: [],
-      userId: result.id,
-      userNom: result.nom,
-      userPrenom: result.prenom,
-      userAdress: result.adresse,
-      userCp: result.codePostal,
-      userCity: result.ville,
+      // user: [],
+      Id: result.id,
+      nom: result.nom,
+      prenom: result.prenom,
+      adresse: result.adresse,
+      codePostal: result.codePostal,
+      ville: result.ville,
     });
   });
 };
+
 userController.save = function (req, res) {
   if (req.body.id == 0) {
     var body = req.body;
@@ -47,7 +50,7 @@ userController.save = function (req, res) {
       if (err) {
         console.log(err);
       }
-      res.direct("/users/");
+      res.direct("/");
     });
   } else {
     var body = req.body;
@@ -65,7 +68,7 @@ userController.save = function (req, res) {
       { multi: true },
       (error, result) => {
         if (error) throw error;
-        res.redirect("/users/");
+        res.redirect("/");
       }
     );
   }
@@ -78,7 +81,7 @@ userController.delete = function (req, res) {
     if (err) {
       console.log(err);
     }
-    res.redirect("/users/");
+    res.redirect("/");
   });
 };
 

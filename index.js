@@ -5,11 +5,13 @@ var cors = require("cors");
 var session = require("express-session");
 var flash = require("connect-flash");
 
-var MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
+
+
 var app = express();
 /* Appel du module user.js */
-var users = require('./routes/user');
-app.use('/', users);
+var users = require("./routes/users");
+app.use("/", users);
 app.use(cors());
 
 app.use(bodyParser.json());
@@ -38,7 +40,6 @@ app.use((err, req, res, next) => {
   res.status = status;
   res.render("error");
 });
-
 
 var server = {
   port: 27017,
