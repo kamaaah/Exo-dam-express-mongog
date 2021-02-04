@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">User</h1>
+      </div>
+      <form action="/user.add" method="POST">
+        <legend>Créer un user</legend>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <input
+              type="text"
+              placeholder="Id pour mise à jour "
+              id="id"
+              class="form-control"
+              value="<%= userId %>"
+              name="id"
+              hidden
+            />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label>Nom</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nom"
+              id="nom"
+              value="<%= userNom %>"
+              name="nom"
+            />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label>Prénom</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Prénom"
+              id="prenom"
+              value="<%= userPrenom %>"
+              name="prenom"
+            />
+            
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label>Adress</label>
+            <input
+              type="text"
+              placeholder="Votre adress"
+              class="form-control"
+              id="adresse"
+              value="<%= userAdress %>"
+              name="adresse"              
+            />            
+          </div>
+          <div class="col-md-3 mb-3">
+            <label>Code Postal</label> 
+            <input
+              type="text"
+              placeholder="Code postal"
+              class="form-control"
+              id="adresse"
+              value="<%= userCp %>"
+              name="codePostal"              
+            />                     
+          </div>
+          <div class="col-md-3 mb-3">
+            <label >Ville</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ville"
+              id="ville"
+              value="<%= userCity %>"
+            />           
+          </div>
+        </div>       
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <ul class="class-group">
+        <% userList.forEach((user) => { %>
+        <li class="list-group-item">
+
+          <a style="float: right;"class="btn btn-danger" href="/deletePersonne/<%= person.id %>">Supprimer</a>                                     
+          <a style="float: right;" class="btn btn-success" href="/editPersonne/<%= person.id %>">Edit</a>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </body>
+</html>
