@@ -10,5 +10,5 @@ module.exports = function () {
     ville: String,
   });
   
-  return db.model('user', user);
+  return db.model('user', users);
 };

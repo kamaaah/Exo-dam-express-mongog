@@ -47,7 +47,7 @@ userController.save = function (req, res) {
       if (err) {
         console.log(err);
       }
-      res.direct("/user/");
+      res.direct("/users/");
     });
   } else {
     var body = req.body;
@@ -65,7 +65,7 @@ userController.save = function (req, res) {
       { multi: true },
       (error, result) => {
         if (error) throw error;
-        res.redirect("/user/");
+        res.redirect("/users/");
       }
     );
   }
@@ -78,7 +78,7 @@ userController.delete = function (req, res) {
     if (err) {
       console.log(err);
     }
-    res.redirect("/user/");
+    res.redirect("/users/");
   });
 };
 

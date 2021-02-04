@@ -8,8 +8,8 @@ var flash = require("connect-flash");
 var MongoClient = require('mongodb').MongoClient;
 var app = express();
 /* Appel du module user.js */
-var user = require('./routes/user');
-app.use('/', user);
+var users = require('./routes/user');
+app.use('/', users);
 app.use(cors());
 
 app.use(bodyParser.json());
